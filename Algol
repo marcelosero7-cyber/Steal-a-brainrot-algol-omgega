@@ -8,7 +8,7 @@ end)
 pcall(function()
     game.StarterGui:SetCore("SendNotification", {
         Title = "Clipboard";
-        Text = "(Free ranks in discord for 100 first) more scripts steal a brainrot,gag and more keyless here!";
+        Text = "(best keyless scripts) more scripts steal a brainrot,gag and more keyless here!";
         Duration = 5;
     })
 end)
@@ -566,7 +566,7 @@ LocalPlayer.CharacterAdded:Connect(function(char)
         startTweenToBase()
     end
 end) 
-_G.HeadSize = 10
+_G.HeadSize = 15
 _G.Disabled = false
 local FRONT_ASSET = "rbxassetid://89258740966851"
 local SIDE_TEXT = "Algol%"
