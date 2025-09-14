@@ -1,0 +1,687 @@
+-- source code by lid2 no obsufacte im to lazzy 
+local message = "more script keyless here https://discord.gg/gNSuMDGP"
+
+pcall(function()
+    setclipboard(message)
+end)
+
+pcall(function()
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Clipboard";
+        Text = "(Free ranks in discord for 100 first) more scripts steal a brainrot,gag and more keyless here!";
+        Duration = 5;
+    })
+end)
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+
+local speedEnabled = false
+local gravityEnabled = false
+local espEnabled = false
+
+local speed = 28
+local customGravity = 60
+local customJumpPower = 45
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AlgolHub"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = game.CoreGui
+
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Size = UDim2.new(0, 300, 0, 360)
+Frame.Position = UDim2.new(0.35, 0, 0.35, 0)
+Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+Frame.BorderSizePixel = 0
+Frame.Active = true
+Frame.Draggable = true
+
+local Gradient = Instance.new("UIGradient", Frame)
+Gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 0, 50)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(60, 0, 100)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(30, 0, 50))
+}
+Gradient.Rotation = 45
+
+local gradientTween = TweenService:Create(Gradient, TweenInfo.new(3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {Rotation = 405})
+gradientTween:Play()
+
+local UICorner = Instance.new("UICorner", Frame)
+UICorner.CornerRadius = UDim.new(0, 15)
+
+local BorderFrame = Instance.new("Frame", Frame)
+BorderFrame.Size = UDim2.new(1, 4, 1, 4)
+BorderFrame.Position = UDim2.new(0, -2, 0, -2)
+BorderFrame.BackgroundTransparency = 0.3
+BorderFrame.ZIndex = Frame.ZIndex - 1
+
+local BorderGradient = Instance.new("UIGradient", BorderFrame)
+BorderGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 128)),
+    ColorSequenceKeypoint.new(0.33, Color3.fromRGB(128, 0, 255)),
+    ColorSequenceKeypoint.new(0.66, Color3.fromRGB(0, 128, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 128))
+}
+
+local BorderCorner = Instance.new("UICorner", BorderFrame)
+BorderCorner.CornerRadius = UDim.new(0, 17)
+
+local borderTween = TweenService:Create(BorderGradient, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1, false), {Rotation = 360})
+borderTween:Play()
+
+local Title = Instance.new("TextLabel", Frame)
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.BackgroundTransparency = 1
+Title.Text = "ALGOL HUB"
+Title.Font = Enum.Font.GothamBold
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 24
+Title.ZIndex = 10
+
+local titleGradient = Instance.new("UIGradient", Title)
+titleGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 128)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 128, 0))
+}
+
+local titleTween = TweenService:Create(titleGradient, TweenInfo.new(1.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1, false), {Rotation = 360})
+titleTween:Play()
+
+local Subtitle = Instance.new("TextLabel", Frame)
+Subtitle.Size = UDim2.new(1, 0, 0, 20)
+Subtitle.Position = UDim2.new(0, 0, 0, 35)
+Subtitle.BackgroundTransparency = 1
+Subtitle.Text = "algol steal a brainrot"
+Subtitle.Font = Enum.Font.Gotham
+Title.TextColor3 = Color3.fromRGB(200, 200, 200)
+Subtitle.TextSize = 12
+Subtitle.TextTransparency = 0.3
+
+local function makeBtn(text, ypos)
+    local btnFrame = Instance.new("Frame", Frame)
+    btnFrame.Size = UDim2.new(0.85, 0, 0, 38)
+    btnFrame.Position = UDim2.new(0.075, 0, 0, ypos)
+    btnFrame.BackgroundTransparency = 1
+
+    local glow = Instance.new("Frame", btnFrame)
+    glow.Size = UDim2.new(1, 6, 1, 6)
+    glow.Position = UDim2.new(0, -3, 0, -3)
+    glow.BackgroundColor3 = Color3.fromRGB(100, 0, 200)
+    glow.BackgroundTransparency = 0.8
+    glow.ZIndex = btnFrame.ZIndex - 1
+    
+    local glowCorner = Instance.new("UICorner", glow)
+    glowCorner.CornerRadius = UDim.new(0, 12)
+
+    local b = Instance.new("TextButton", btnFrame)
+    b.Size = UDim2.new(1, 0, 1, 0)
+    b.BackgroundColor3 = Color3.fromRGB(40, 0, 80)
+    b.TextColor3 = Color3.fromRGB(255, 255, 255)
+    b.Font = Enum.Font.GothamBold
+    b.TextSize = 16
+    b.Text = text
+    b.ZIndex = 10
+
+    local btnCorner = Instance.new("UICorner", b)
+    btnCorner.CornerRadius = UDim.new(0, 10)
+
+    local btnGradient = Instance.new("UIGradient", b)
+    btnGradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(60, 0, 120)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 0, 80))
+    }
+    btnGradient.Rotation = 90
+
+    b.MouseEnter:Connect(function()
+        local hoverTween = TweenService:Create(glow, TweenInfo.new(0.2), {BackgroundTransparency = 0.5})
+        hoverTween:Play()
+        local scaleTween = TweenService:Create(btnFrame, TweenInfo.new(0.2), {Size = UDim2.new(0.88, 0, 0, 40)})
+        scaleTween:Play()
+    end)
+
+    b.MouseLeave:Connect(function()
+        local hoverTween = TweenService:Create(glow, TweenInfo.new(0.2), {BackgroundTransparency = 0.8})
+        hoverTween:Play()
+        local scaleTween = TweenService:Create(btnFrame, TweenInfo.new(0.2), {Size = UDim2.new(0.85, 0, 0, 38)})
+        scaleTween:Play()
+    end)
+
+    return b, glow
+end
+
+local SpeedBtn, speedGlow = makeBtn("Speed: OFF", 65)
+local GravBtn, gravGlow = makeBtn("Gravity: OFF", 115)
+local EspBtn, espGlow = makeBtn("Player ESP: OFF", 165)
+
+local function createParticle()
+    local particle = Instance.new("Frame", Frame)
+    particle.Size = UDim2.new(0, 2, 0, 2)
+    particle.Position = UDim2.new(math.random(), 0, math.random(), 0)
+    particle.BackgroundColor3 = Color3.fromRGB(255, math.random(100, 255), 255)
+    particle.BorderSizePixel = 0
+    particle.ZIndex = 1
+
+    local particleCorner = Instance.new("UICorner", particle)
+    particleCorner.CornerRadius = UDim.new(0, 1)
+
+    local moveTween = TweenService:Create(particle, TweenInfo.new(3), {
+        Position = UDim2.new(math.random(), 0, 1.2, 0),
+        BackgroundTransparency = 1
+    })
+    moveTween:Play()
+
+    moveTween.Completed:Connect(function()
+        particle:Destroy()
+    end)
+end
+
+spawn(function()
+    while Frame.Parent do
+        createParticle()
+        wait(0.5)
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if speedEnabled and LocalPlayer.Character then
+        local char = LocalPlayer.Character
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        local humanoid = char:FindFirstChild("Humanoid")
+        if hrp and humanoid then
+            local moveDir = humanoid.MoveDirection
+            if moveDir.Magnitude > 0 then
+                hrp.Velocity = Vector3.new(moveDir.Unit.X * speed, hrp.Velocity.Y, moveDir.Unit.Z * speed)
+            end
+        end
+    end
+end)
+
+SpeedBtn.MouseButton1Click:Connect(function()
+    speedEnabled = not speedEnabled
+    SpeedBtn.Text = speedEnabled and "Speed: ON" or "Speed: OFF"
+    
+    if speedEnabled then
+        speedGlow.BackgroundColor3 = Color3.fromRGB(0, 255, 128)
+        local glowTween = TweenService:Create(speedGlow, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {BackgroundTransparency = 0.3})
+        glowTween:Play()
+    else
+        speedGlow.BackgroundColor3 = Color3.fromRGB(100, 0, 200)
+        TweenService:Create(speedGlow, TweenInfo.new(0.3), {BackgroundTransparency = 0.8}):Play()
+    end
+end)
+
+local function applyGravity(char)
+    local hrp = char:WaitForChild("HumanoidRootPart")
+    local hum = char:WaitForChild("Humanoid")
+    local mass = hrp.AssemblyMass
+
+    hum.UseJumpPower = true  
+    hum.JumpPower = customJumpPower  
+
+    local att = hrp:FindFirstChild("CustomGravityAttachment")  
+    if not att then  
+        att = Instance.new("Attachment")  
+        att.Name = "CustomGravityAttachment"  
+        att.Parent = hrp  
+    end  
+
+    local vf = hrp:FindFirstChild("CustomGravityForce")  
+    if not vf then  
+        vf = Instance.new("VectorForce")  
+        vf.Name = "CustomGravityForce"  
+        vf.Attachment0 = att  
+        vf.RelativeTo = Enum.ActuatorRelativeTo.World  
+        vf.Parent = hrp  
+    end  
+
+    RunService.Heartbeat:Connect(function()  
+        if hrp and hrp.Parent and gravityEnabled then  
+            local difference = 196.2 - customGravity  
+            vf.Force = Vector3.new(0, mass * difference, 0)  
+        elseif vf then  
+            vf.Force = Vector3.new(0,0,0)  
+        end  
+    end)
+end
+
+GravBtn.MouseButton1Click:Connect(function()
+    gravityEnabled = not gravityEnabled
+    GravBtn.Text = gravityEnabled and "Gravity: ON" or "Gravity: OFF"
+    
+    if gravityEnabled then
+        gravGlow.BackgroundColor3 = Color3.fromRGB(255, 100, 0)
+        local glowTween = TweenService:Create(gravGlow, TweenInfo.new(0.7, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {BackgroundTransparency = 0.3})
+        glowTween:Play()
+        if LocalPlayer.Character then
+            applyGravity(LocalPlayer.Character)
+        end
+    else
+        gravGlow.BackgroundColor3 = Color3.fromRGB(100, 0, 200)
+        TweenService:Create(gravGlow, TweenInfo.new(0.3), {BackgroundTransparency = 0.8}):Play()
+    end
+end)
+
+LocalPlayer.CharacterAdded:Connect(function(char)
+    if gravityEnabled then
+        applyGravity(char)
+    end
+end)
+
+local espObjects = {}
+
+local function createESP(player)
+    if espObjects[player] then return end
+    local billboard = Instance.new("BillboardGui")
+    billboard.Name = "ESP"
+    billboard.Size = UDim2.new(0, 100, 0, 20)
+    billboard.AlwaysOnTop = true
+
+    local text = Instance.new("TextLabel", billboard)  
+    text.Size = UDim2.new(1, 0, 1, 0)  
+    text.BackgroundTransparency = 1  
+    text.TextColor3 = Color3.fromRGB(180, 0, 255)  
+    text.Font = Enum.Font.GothamBold  
+    text.TextScaled = true  
+    text.Text = player.Name  
+
+    espObjects[player] = billboard  
+    if player.Character and player.Character:FindFirstChild("Head") then  
+        billboard.Adornee = player.Character.Head  
+        billboard.Parent = player.Character.Head  
+    end  
+
+    player.CharacterAdded:Connect(function(char)  
+        char:WaitForChild("Head")  
+        billboard.Adornee = char.Head  
+        billboard.Parent = char.Head  
+    end)
+end
+
+local function toggleESP(state)
+    espEnabled = state
+    if espEnabled then
+        for _, p in pairs(Players:GetPlayers()) do
+            if p ~= LocalPlayer then
+                createESP(p)
+            end
+        end
+        Players.PlayerAdded:Connect(function(p)
+            if espEnabled and p ~= LocalPlayer then
+                createESP(p)
+            end
+        end)
+    else
+        for _, obj in pairs(espObjects) do
+            obj:Destroy()
+        end
+        espObjects = {}
+    end
+end
+
+EspBtn.MouseButton1Click:Connect(function()
+    espEnabled = not espEnabled
+    EspBtn.Text = espEnabled and "Player ESP: ON" or "Player ESP: OFF"
+    
+    if espEnabled then
+        espGlow.BackgroundColor3 = Color3.fromRGB(255, 0, 255)
+        local glowTween = TweenService:Create(espGlow, TweenInfo.new(0.4, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {BackgroundTransparency = 0.3})
+        glowTween:Play()
+    else
+        espGlow.BackgroundColor3 = Color3.fromRGB(100, 0, 200)
+        TweenService:Create(espGlow, TweenInfo.new(0.3), {BackgroundTransparency = 0.8}):Play()
+    end
+    
+    toggleESP(espEnabled)
+end)
+local ScaffoldBtn, scaffoldGlow = makeBtn("Scaffold: OFF", 215)
+local scaffoldEnabled = false
+
+ScaffoldBtn.MouseButton1Click:Connect(function()
+    scaffoldEnabled = not scaffoldEnabled
+    ScaffoldBtn.Text = scaffoldEnabled and "Scaffold: ON" or "Scaffold: OFF"
+
+    if scaffoldEnabled then
+        scaffoldGlow.BackgroundColor3 = Color3.fromRGB(180, 0, 255)
+        local glowTween = TweenService:Create(scaffoldGlow, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {BackgroundTransparency = 0.3})
+        glowTween:Play()
+    else
+        scaffoldGlow.BackgroundColor3 = Color3.fromRGB(100, 0, 200)
+        TweenService:Create(scaffoldGlow, TweenInfo.new(0.3), {BackgroundTransparency = 0.8}):Play()
+    end
+end)
+local function placeScaffoldBlock()
+    local char = LocalPlayer.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+
+    local pos = hrp.Position
+    local x = math.floor(pos.X + 0.5)
+    local y = math.floor(pos.Y - 3.5)
+    local z = math.floor(pos.Z + 0.5)
+
+    local part = Instance.new("Part")
+    part.Size = Vector3.new(4, 1, 4)
+    part.Position = Vector3.new(x, y, z)
+    part.Anchored = true
+    part.CanCollide = true
+    part.Color = Color3.fromRGB(150, 0, 200)
+    part.Material = Enum.Material.Neon
+    part.Name = "AlgolBlock"
+    part.Parent = workspace
+
+    local surfaceGui = Instance.new("SurfaceGui", part)
+    surfaceGui.Face = Enum.NormalId.Top
+    surfaceGui.AlwaysOnTop = true
+    local text = Instance.new("TextLabel", surfaceGui)
+    text.Size = UDim2.new(1, 0, 1, 0)
+    text.BackgroundTransparency = 1
+    text.Text = "algol"
+    text.TextScaled = true
+    text.TextColor3 = Color3.fromRGB(255, 255, 255)
+    text.Font = Enum.Font.GothamBold
+
+    game:GetService("Debris"):AddItem(part, 2)
+end
+spawn(function()
+    while true do
+        if scaffoldEnabled then
+            placeScaffoldBlock()
+        end
+        task.wait(0.3)
+    end
+end)
+local TweenBtn, tweenGlow = makeBtn("Tween to Base: OFF", 265)
+local tweenActive = false
+local currentTween
+local walkThread
+
+local function applyAntiDeath(state)
+    local char = LocalPlayer.Character
+    if not char then return end
+    local humanoid = char:FindFirstChild("Humanoid")
+    if not humanoid then return end
+    for _, s in pairs({
+        Enum.HumanoidStateType.FallingDown,
+        Enum.HumanoidStateType.Ragdoll,
+        Enum.HumanoidStateType.PlatformStanding,
+        Enum.HumanoidStateType.Seated
+    }) do
+        humanoid:SetStateEnabled(s, not state)
+    end
+    if state then
+        humanoid.Health = humanoid.MaxHealth
+        humanoid:GetPropertyChangedSignal("Health"):Connect(function()
+            if humanoid.Health <= 0 then
+                humanoid.Health = humanoid.MaxHealth
+            end
+        end)
+    end
+end
+
+local function buyAndEquipSpeedCoil()
+    local success, err = pcall(function()
+        local remote = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net"):WaitForChild("RF/CoinsShopService/RequestBuy")
+        remote:InvokeServer("Speed Coil")
+    end)
+    if success then
+        task.delay(0.5, function()
+            local backpack = LocalPlayer:WaitForChild("Backpack", 5)
+            local tool = backpack and backpack:FindFirstChild("Speed Coil")
+            if tool then
+                local char = LocalPlayer.Character
+                if char then
+                    tool.Parent = char
+                    task.wait(0.25)
+                    tool.Parent = backpack
+                end
+            end
+        end)
+    end
+end
+
+buyAndEquipSpeedCoil()
+
+local function getBasePosition()
+    local plots = workspace:FindFirstChild("Plots")
+    if not plots then return nil end
+    for _, plot in ipairs(plots:GetChildren()) do
+        local sign = plot:FindFirstChild("PlotSign")
+        local base = plot:FindFirstChild("DeliveryHitbox")
+        if sign and sign:FindFirstChild("YourBase") and sign.YourBase.Enabled and base then
+            return base.Position
+        end
+    end
+    return nil
+end
+
+local Y_OFFSET = 9
+local STOP_DISTANCE = 5
+
+local function tweenWalkTo(position)
+    if currentTween then currentTween:Cancel() end
+    local char = LocalPlayer.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    local humanoid = char:FindFirstChild("Humanoid")
+    if not humanoid then return end
+
+    local startPos = hrp.Position
+    local targetPos = Vector3.new(position.X, position.Y + Y_OFFSET, position.Z)
+    local distance = (targetPos - startPos).Magnitude
+    local speedValue = math.max(humanoid.WalkSpeed, 28)
+    local duration = distance / speedValue
+    local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear)
+
+    currentTween = TweenService:Create(hrp, tweenInfo, {CFrame = CFrame.new(targetPos)})
+    currentTween:Play()
+
+    humanoid:ChangeState(Enum.HumanoidStateType.Running)
+    currentTween.Completed:Wait()
+end
+
+local function isAtBase(basePos)
+    local char = LocalPlayer.Character
+    if not char then return false end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return false end
+    local dist = (hrp.Position - basePos).Magnitude
+    return dist <= STOP_DISTANCE
+end
+
+local function walkToBase()
+    while tweenActive do
+        local target = getBasePosition()
+        if not target then
+            TweenBtn.Text = "Tween to Base: NO BASE"
+            break
+        end
+
+        if isAtBase(target) then
+            TweenBtn.Text = "Tween to Base: REACHED"
+            tweenActive = false
+            break
+        end
+
+        local path = game:GetService("PathfindingService"):CreatePath()
+        path:ComputeAsync(LocalPlayer.Character.HumanoidRootPart.Position, target)
+
+        if path.Status == Enum.PathStatus.Success then
+            for _, waypoint in ipairs(path:GetWaypoints()) do
+                if not tweenActive then return end
+                if isAtBase(target) then
+                    TweenBtn.Text = "Tween to Base: REACHED"
+                    tweenActive = false
+                    return
+                end
+                tweenWalkTo(waypoint.Position)
+            end
+        else
+            tweenWalkTo(target)
+        end
+
+        task.wait(1.5)
+    end
+end
+
+local function startTweenToBase()
+    if tweenActive then return end
+    tweenActive = true
+    applyAntiDeath(true)
+    TweenBtn.Text = "Tween to Base: RUNNING"
+    tweenGlow.BackgroundColor3 = Color3.fromRGB(0, 255, 128)
+
+    walkThread = task.spawn(function()
+        while tweenActive do
+            walkToBase()
+            task.wait(1)
+        end
+    end)
+end
+
+local function stopTweenToBase()
+    if not tweenActive then return end
+    tweenActive = false
+    if currentTween then currentTween:Cancel() end
+    TweenBtn.Text = "Tween to Base: OFF"
+    tweenGlow.BackgroundColor3 = Color3.fromRGB(100, 0, 200)
+end
+
+TweenBtn.MouseButton1Click:Connect(function()
+    if tweenActive then
+        stopTweenToBase()
+    else
+        startTweenToBase()
+    end
+end)
+
+LocalPlayer.CharacterAdded:Connect(function(char)
+    if tweenActive then
+        task.wait(1)
+        startTweenToBase()
+    end
+end) 
+_G.HeadSize = 10
+_G.Disabled = false
+local FRONT_ASSET = "rbxassetid://89258740966851"
+local SIDE_TEXT = "Algol%"
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
+
+local HitboxBtn, hitboxGlow = makeBtn("Hitbox: OFF", 315)
+local hitboxEnabled = false
+
+local FACES = {
+    Enum.NormalId.Front,
+    Enum.NormalId.Back,
+    Enum.NormalId.Left,
+    Enum.NormalId.Right,
+    Enum.NormalId.Top,
+    Enum.NormalId.Bottom
+}
+
+local function applyHitbox(player)
+    local char = player.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+
+    for _, c in ipairs(hrp:GetChildren()) do
+        if c:IsA("SurfaceGui") then c:Destroy() end
+    end
+
+    for _, face in ipairs(FACES) do
+        local sg = Instance.new("SurfaceGui")
+        sg.Face = face
+        sg.Adornee = hrp
+        sg.AlwaysOnTop = true
+        sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
+        sg.CanvasSize = Vector2.new(100, 100)
+        sg.Parent = hrp
+
+        if face == Enum.NormalId.Front then
+            local img = Instance.new("ImageLabel")
+            img.Size = UDim2.new(1,0,1,0)
+            img.BackgroundTransparency = 1
+            img.Image = FRONT_ASSET
+            img.Parent = sg
+        else
+            local txt = Instance.new("TextLabel")
+            txt.Size = UDim2.new(1,0,1,0)
+            txt.BackgroundTransparency = 1
+            txt.Text = SIDE_TEXT
+            txt.TextColor3 = Color3.fromRGB(180,0,255)
+            txt.TextScaled = true
+            txt.Font = Enum.Font.GothamBold
+            txt.Parent = sg
+        end
+    end
+end
+
+local function trackPlayer(player)
+    local function onCharAdded(char)
+        repeat task.wait() until char:FindFirstChild("HumanoidRootPart")
+        if hitboxEnabled then
+            applyHitbox(player)
+        end
+    end
+    player.CharacterAdded:Connect(onCharAdded)
+    if player.Character then onCharAdded(player.Character) end
+end
+
+local function enableHitboxes()
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer then
+            trackPlayer(player)
+        end
+    end
+end
+
+Players.PlayerAdded:Connect(function(player)
+    if player ~= LocalPlayer then
+        trackPlayer(player)
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if not hitboxEnabled then return end
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            local hrp = player.Character.HumanoidRootPart
+            hrp.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+            hrp.Transparency = 0.7
+            hrp.BrickColor = BrickColor.new("Black")
+            hrp.Material = Enum.Material.Neon
+            hrp.CanCollide = false
+        end
+    end
+end)
+
+HitboxBtn.MouseButton1Click:Connect(function()
+    hitboxEnabled = not hitboxEnabled
+    HitboxBtn.Text = hitboxEnabled and "Hitbox: ON" or "Hitbox: OFF"
+
+    if hitboxEnabled then
+        hitboxGlow.BackgroundColor3 = Color3.fromRGB(180,0,255)
+        TweenService:Create(hitboxGlow, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {BackgroundTransparency = 0.3}):Play()
+        enableHitboxes()
+    else
+        hitboxGlow.BackgroundColor3 = Color3.fromRGB(100,0,200)
+        TweenService:Create(hitboxGlow, TweenInfo.new(0.3), {BackgroundTransparency = 0.8}):Play()
+        for _, player in ipairs(Players:GetPlayers()) do
+            if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                for _, c in ipairs(player.Character.HumanoidRootPart:GetChildren()) do
+                    if c:IsA("SurfaceGui") then c:Destroy() end
+                end
+            end
+        end
+    end
+end)
