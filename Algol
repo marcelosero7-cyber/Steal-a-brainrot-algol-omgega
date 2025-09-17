@@ -1,5 +1,5 @@
 -- source code by lid2 no obsufacte im to lazzy 
-local message = "more script keyless here https://discord.gg/gNSuMDGP"
+local message = "more script keyless here https://discord.gg/p47FBF8C"
 
 pcall(function()
     setclipboard(message)
