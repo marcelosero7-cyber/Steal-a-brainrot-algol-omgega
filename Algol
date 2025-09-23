@@ -1,4 +1,4 @@
-local message = "more script keyless here https://discord.gg/9X4AZQXQ"
+local message = "more script keyless here https://discord.gg/EpjGE6ud"
 
 pcall(function()
     setclipboard(message)
